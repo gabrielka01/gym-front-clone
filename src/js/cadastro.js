@@ -22,9 +22,12 @@ async function cadastro(event) {
     }
 
     // tenta contato com o back
-    const isLocal =
-  window.location.hostname === "localhost" ||
-  window.location.hostname === "127.0.0.1";
+    const API_URL =
+    window.location.hostname.includes("localhost") ||
+    window.location.hostname.includes("127.0.0.1")
+      ? "http://localhost:8080/api/usuarios"
+      : "https://gymflow-backend.up.railway.app/api/usuarios";
+
 
 const BASE_URL = isLocal
   ? "http://localhost:8080/api"
