@@ -1,0 +1,164 @@
+body{
+    background-image: url(../assets/bg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: 50%;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8em 3em;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+
+.logo-img{
+    width: 80px;
+}
+
+.logo-text{
+    width: 200px;
+    padding-top: 1em;
+}
+
+.nav a{
+    text-decoration: none;
+    padding-right: 1em;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav a:hover{
+    color: #3b3b3b;
+}
+
+.nav-side, .nav-side-icon{
+    display: none;
+}
+
+main{
+    width: 85%;
+    margin: 0 auto ;
+    margin-top: 2em;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px #616161;
+}
+
+.graficos-container{
+    display: flex;
+    justify-content: center;
+    padding: 3em 0 3em 0;
+    gap: 3em;
+}
+
+.graficos-container-1, .graficos-container-2{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+
+}
+
+.grafico-container canvas{
+    width: 50em;
+    height: 35em;
+    background-color: #e2e1e14f;
+    border-radius: 5px;
+}
+
+
+
+/* Responsividade*/
+@media (max-width: 1200px){  
+}
+
+@media (max-width: 992px){
+
+    nav a{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 420px){
+}
+
+/* Portrait mode todos e Landscape pequenos */
+@media (orientation: portrait), (max-width: 940px) and (orientation: landscape) {
+    body{
+        background-image: url(../assets/bg-portrait.PNG);
+        background-size: cover;
+        background-position: 50%;
+    }
+
+    header{
+        padding: 0.8em 1.5em;
+    }
+
+    .logo-img{
+        width: 50px;
+    }
+
+    .logo-text{
+        width: 150px;
+    }
+
+    .nav{
+        display: none;
+    }
+
+    /* side nav */
+
+    .nav-side, .nav-side-icon{
+        display: block;
+    }
+
+    .nav-side-icon{
+        font-size: 2em;
+        color: #1565C0;
+    }
+
+    .nav-side {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 3; 
+    top: 0; 
+    right: 0;
+    background-color: #1565C0; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+    }
+
+    .nav-side a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+    }
+
+    .nav-side a:hover {
+    cursor: pointer;
+    color: #3b3b3b;
+    }
+
+    .nav-side .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 2em;
+    }
+
+/*--------------------*/
+
+}

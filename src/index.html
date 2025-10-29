@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymFlow Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    />
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-container-left">
+            <img class="img-logo" src="assets/GYMFLOW-logo.png">
+            <p>Organize seus treinos, acompanhe estatísticas e evolua todos os dias</p>
+        </div>
+        <div class="login-container-right">
+            <h2>Bem-vindo de volta!</h2>
+            <p>Entre para acessar seus treinos</p>
+            <form id="login-form" onsubmit="login(event)">
+                <div class="form-info">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" placeholder="Insira seu email">
+                </div>
+                <div class="form-info">
+                    <label for="senha">Senha:</label>
+                    <div class="senha">
+                        <input type="password" id="senha" placeholder="Insira sua senha">
+                        <i class="fa-regular fa-eye" onclick="viewSenha()" ></i>
+                    </div>
+                </div>
+                <button type="button" class="link-senha" onclick="abrirPopup('popupSenha')">
+                    Esqueceu a senha?
+                </button>
+                <input class="btn-login" type="submit" value="LOGIN">
+            </form>
+            <div class="cadastro">
+                <p>Não tem uma conta?</p>
+                <a href="paginas/cadastro.html">Cadastre-se</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de erro -->
+    <div id="popupErro" class="popup">
+        <div class="popup-conteudo">
+            <p id="popupMensagem"></p>
+            <button onclick="fecharPopup()">Ok</button>
+        </div>
+    </div>
+
+    <!-- Popup redefinir senha -->
+    <div id="popupSenha" class="popup">
+        <div class="popup-conteudo">
+            <h3>Redefinir Senha</h3>
+            <form id="formRedefinirSenha" onsubmit="redefinirSenha(event)">
+                <input type="text" id="resetNome" placeholder="Seu nome cadastrado">
+                <input type="text" id="resetEmail" placeholder="Seu email cadastrado">
+                <input type="password" id="novaSenha" placeholder="Digite a nova senha">
+                <div>
+                <button type="submit">Redefinir</button>
+                <button type="button" onclick="fecharPopupSenha()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div>
+        <a href="paginas/pagina-user.html">pagina user</a>
+        <a href="paginas/MenuPrincipal.html">menu principal</a>
+        <a href="paginas/estatisticas.html">estatisticas</a>
+    </div>
+    
+
+    <script src="js/login.js"></script>
+</body>
+</html>
