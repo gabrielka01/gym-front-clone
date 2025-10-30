@@ -1,3 +1,10 @@
+const API_URL =
+    window.location.hostname.includes("localhost") ||
+    window.location.hostname.includes("127.0.0.1")
+      ? "http://localhost:8080/api/usuarios/login"
+      : "https://gymflow-backend.up.railway.app/api/usuarios/login";
+
+
 async function login(event) {
     event.preventDefault();
 
@@ -15,25 +22,35 @@ async function login(event) {
     }
 
     try {
-        // enviar dados para backend
-        const res = await fetch("http://localhost:8080/api/----", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, senha })
-        });
+    const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, senha }),
+    });
 
-        if (!res.ok) {
-            mostrarPopup("Email ou senha inválidos!");
-            return;
-        }
+    const data = await res.json();
 
-        const data = await res.json();
-        localStorage.setItem("token", data.token); // salvar jwt no navegador
-
-    } catch (err) {
-        mostrarPopup("Erro de conexão com o servidor!");
-        console.error(err);
+    if (!res.ok) {
+        mostrarPopup(data.message || "Email ou senha inválidos!");
+        return;
     }
+
+    // limpa dados antigos do localStorage
+    localStorage.clear();
+
+    // salva o token
+    if (data.token) {
+        localStorage.setItem("token", data.token);
+    }
+
+    console.log("Login bem-sucedido. Token salvo:", data.token);
+
+    window.location.href = "/src/paginas/MenuPrincipal.html";
+
+} catch (err) {
+    mostrarPopup("Erro de conexão com o servidor!");
+    console.error(err);
+}
 }
 
 // redefinir senha
@@ -60,12 +77,12 @@ async function redefinirSenha(event) {
         return;
     }
 
-    try {
-        // envia os dados para o backend
-        const res = await fetch("http://localhost:8080/api/----", {
+    
+    try{
+        const res = await fetch(API_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nome, email, novaSenha })
+            body: JSON.stringify({ nome, email, senha: novaSenha }),
         });
 
         const data = await res.json();

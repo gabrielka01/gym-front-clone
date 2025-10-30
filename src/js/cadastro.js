@@ -28,11 +28,6 @@ async function cadastro(event) {
       ? "http://localhost:8080/api/usuarios"
       : "https://gymflow-backend.up.railway.app/api/usuarios";
 
-
-const BASE_URL = isLocal
-  ? "http://localhost:8080/api"
-  : "https://sua-api-em-producao.com/api";
-
     try{
         const res = await fetch(API_URL, {
             method: "POST",
